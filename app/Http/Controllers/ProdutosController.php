@@ -38,7 +38,8 @@ class ProdutosController extends Controller
             'nome' => 'required|string|max:255',
             'preco' => 'required|numeric',
             'descricao' => 'nullable|string',
-            'imagem' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'imagem' => 'nullable|image|mimes:avif,jpeg,png,jpg,gif|max:2048',
+            'categoria_id' => 'required|exists:categorias,id',
         ]);
 
         $caminhoImagem = null;

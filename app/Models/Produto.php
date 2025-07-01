@@ -12,4 +12,9 @@ class Produto extends Model
         'descricao',
         'imagem'
     ];
+
+    public function categoria(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+{
+    return $this->belongsTo(Categoria::class);
+}
 }

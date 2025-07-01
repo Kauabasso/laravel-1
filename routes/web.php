@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CalculosController;
 use App\Http\Controllers\CarrinhoController;
+use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\KeepinhoController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\ProfileController;
@@ -57,6 +58,9 @@ Route::resource('produtos', ProdutosController::class);
 Route::get('/carrinho', [CarrinhoController::class, 'index'])->name('carrinho.index');
 Route::get('/carrinho/store/{produto}', [CarrinhoController::class, 'store'])->name('carrinho.store');
 Route::get('/carrinho/remove/{produto}', [CarrinhoController::class, 'remove'])->name('carrinho.remove');
+
+Route::get('/categorias/{categoria}', [CategoriasController::class, 'index'])->name('categoria.index');
+
 
 
 require __DIR__ . '/auth.php';

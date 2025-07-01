@@ -24,6 +24,8 @@ class CarrinhoController extends Controller
                 'preco' => $produto->preco,
                 'quantidade' => 1,
                 'imagem' => $produto->imagem,
+                'categoria_id' => 'required|exists:categorias,id',
+
             ];
         }
 
@@ -35,11 +37,8 @@ class CarrinhoController extends Controller
     public function remove(Produto $produto) {
         $carrinho = session()->get('carrinho', []);
 
-        if (isset($carrinho[$produto])) {
             unset($carrinho[$produto]);
-            session()->put('carrinho', $carrinho);
-        }
-
-        return redirect()->route('carrinho.index')->with('success', 'Produto removido do carrinho!');
+            $carrinho = session()('carrinho', $carrinho);
+            return redirect()->route('carrinho.index')->with('success', 'Produto removido do carrinho!');
     }
 }
