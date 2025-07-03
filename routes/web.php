@@ -59,7 +59,7 @@ Route::get('/carrinho', [CarrinhoController::class, 'index'])->name('carrinho.in
 Route::get('/carrinho/store/{produto}', [CarrinhoController::class, 'store'])->name('carrinho.store');
 Route::get('/carrinho/remove/{produto}', [CarrinhoController::class, 'remove'])->name('carrinho.remove');
 
-Route::get('/categorias/{categoria}', [CategoriasController::class, 'index'])->name('categoria.index');
+Route::resource('categorias', CategoriasController::class);
 
 
 

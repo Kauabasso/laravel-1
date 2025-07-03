@@ -9,8 +9,8 @@ class CategoriasController extends Controller
 {
     public function index(Categoria $categoria)
     {
-        $produtos = $categoria->produtos()->get();
-        return view('categorias.index', compact('categoria', 'produtos'));
+        $categorias = Categoria::all();
+        return view('categorias.index', compact('categorias'));
     }
 
     public function create()
@@ -20,27 +20,37 @@ class CategoriasController extends Controller
 
     public function store(Request $request)
     {
-        // Lógica para armazenar a categoria
-        // Exemplo: Categoria::create($request->all());
+        $request->validate([
+            'nome' => 'required|string|max:255',
+        ]);
+
+        Categoria::create($request->only('nome'));
+
         return redirect()->route('categorias.index')->with('success', 'Categoria criada com sucesso!');
     }
+    public function show(Categoria $categoria)
+    {
+        $produtos = $categoria->produtos;
+        return view('categorias.show', compact('categoria', 'produtos'));
+    }
+
 
     public function edit($id)
     {
         // Lógica para editar a categoria
-        return view('categorias.edit', compact('id'));
+        // return view('categorias.edit', compact('id'));
     }
 
     public function update(Request $request, $id)
     {
         // Lógica para atualizar a categoria
-        return redirect()->route('categorias.index')->with('success', 'Categoria atualizada com sucesso!');
+        // return redirect()->route('categorias.index')->with('success', 'Categoria atualizada com sucesso!');
     }
 
     public function destroy($id)
     {
         // Lógica para excluir a categoria
-        return redirect()->route('categorias.index')->with('success', 'Categoria excluída com sucesso!');
+        // return redirect()->route('categorias.index')->with('success', 'Categoria excluída com sucesso!');
     }
 
 }
