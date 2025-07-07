@@ -12,15 +12,23 @@
                     <x-link-button href="{{  route('categorias.create') }}">
                         +Categoria
                     </x-link-button>
+                    <br><br>
+                    @if(count($categorias) > 0)
+                        @php $total = 0;
+                    @endphp
                     <hr>
                     @foreach ($categorias as $categoria)
-                        <br><br>
-                        <b>{{ $categoria->nome }}</b>
-                        <br><br>
-                        @csrf
-                        <hr>
-                        </form>
+                    <br><br>
+                    <b>Categoria: {{ $categoria->nome }}</b>
+                    <br><br>
+                    @csrf
+                    <hr>
+                    </form>
                     @endforeach
+
+                    @else
+                    <p>Não existem categorias.</p>
+                    @endif
                 </div>
             </div>
         </div>

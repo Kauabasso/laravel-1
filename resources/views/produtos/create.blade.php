@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Produtos &raquo; Criar
+            Produto &raquo; Criar
         </h2>
     </x-slot>
 
@@ -12,36 +12,46 @@
 
                     <form method="POST" enctype="multipart/form-data" action="{{ route('produtos.store') }}">
                         @csrf
+
                         <!-- Nome -->
                         <div>
                             <x-input-label for="nome" :value="__('Nome')" />
-                            <x-text-input id="nome" class="block mt-1 w-full" type="text" name="nome"
-                                :value="old('nome')" required autofocus autocomplete="nome" />
-                            <x-input-error :messages="$errors->get('nome')" class="mt-2" />
+                            <x-text-input id="nome" class="block mt-1 w-full" type="text" name="nome" required />
                         </div>
 
-                        <!-- Preço -->
+                        <!-- Preco -->
                         <div>
                             <x-input-label for="preco" :value="__('Preço')" />
-                            <x-text-input id="preco" class="block mt-1 w-full" type="text" name="preco"
-                                :value="old('preco')" required autofocus autocomplete="preco" />
-                            <x-input-error :messages="$errors->get('preco')" class="mt-2" />
+                            <x-text-input id="preco" class="block mt-1 w-full" type="text" name="preco" required />
                         </div>
 
-                        <!-- Descrição -->
+                        <!-- Descricao -->
                         <div>
                             <x-input-label for="descricao" :value="__('Descrição')" />
-                            <x-textarea id="descricao" class="block mt-1 w-full" type="text" name="descricao" :required
-                                autofocus autocomplete="descricao"> {{ old('descricao') }} </x-textarea>
-                            <x-input-error :messages="$errors->get('descricao')" class="mt-2" />
+                            <textarea name="descricao" class="w-full dark:text-black">{{ old('descricao') }}</textarea>
                         </div>
-                        <br>
-                        <input type="file" name="imagem" id="imagem" accept="image/*">
-                        <br><br>
-                        <x-primary-button>
-                            Salvar
-                        </x-primary-button>
+
+                        <!-- Categoria -->
+                        <div>
+                            <x-input-label for="categoria_id" value="Categoria" />
+                            <select name="categoria_id" id="categoria_id" class="block mt-1 w-full" required>
+                                <option value="">Selecione uma categoria</option>
+                                @foreach ($categorias as $categoria)
+                                <option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
+                                @endforeach
+                            </select>
+                            <x-input-error :messages="$errors->get('categoria_id')" class="mt-2" />
+                        </div>
+
+                        <!-- Imagem -->
+                        <div>
+                            <x-input-label for="imagem" :value="__('Imagem')" />
+                            <input type="file" name="imagem" accept="image/*" class="block mt-1">
+                        </div>
+
+                        <x-primary-button class="mt-4">Salvar</x-primary-button>
                     </form>
+
                 </div>
             </div>
         </div>

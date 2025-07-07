@@ -24,9 +24,9 @@
                         Carrinho de Compras
                     </x-nav-link>
 
-                    <!-- <x-nav-link :href="route('categorias.index')" :active="request()->routeIs('categorias.index')">
+                    <x-nav-link :href="route('categorias.index')" :active="request()->routeIs('categorias.index')">
                         Categorias
-                    </x-nav-link> -->
+                    </x-nav-link>
                 </div>
 
             </div>
