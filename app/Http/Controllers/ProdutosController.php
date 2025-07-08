@@ -25,7 +25,6 @@ class ProdutosController extends Controller
      */
     public function create()
     {
-
         $categorias = Categoria::all();
         return view('produtos.create', compact('categorias'));
     }
