@@ -38,6 +38,7 @@
                             <x-link-button href="{{ route('carrinho.remove', $id) }}">
                                 Remover do Carrinho
                             </x-link-button>
+                            @method('DELETE')
 
                             <hr>
                         @endforeach

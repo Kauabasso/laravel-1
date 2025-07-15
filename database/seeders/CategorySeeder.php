@@ -16,5 +16,7 @@ class CategorySeeder extends Seeder
         Category::create(['name' => 'Frutas',]);
         Category::create(['name' => 'Tecnologia',]);
         Category::create(['name' => 'Aparelhos dentários',]);
+        Category::create(['name' => 'Esportes']);
+        Category::create(['name' => 'Política']);
     }
 }

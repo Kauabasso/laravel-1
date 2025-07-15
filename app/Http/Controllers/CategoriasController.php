@@ -26,7 +26,7 @@ class CategoriasController extends Controller
 
         Categoria::create($request->only('nome'));
 
-        return redirect()->route('categorias.index')->with('success', 'Categoria criada com sucesso!');
+        return redirect()->route('categorias.index');
     }
     public function show(Categoria $categoria)
     {
