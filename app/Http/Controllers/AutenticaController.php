@@ -27,3 +27,4 @@ class AutenticaController extends Controller
         return view('autentica.login');
     }
 }
+
